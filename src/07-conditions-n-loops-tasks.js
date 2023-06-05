@@ -377,8 +377,8 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
@@ -394,8 +394,10 @@ function toNaryString(/* num, n */) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const dirs = pathes.map((e) => e.split('/'));
+  const index = dirs[0].findIndex((x, i) => dirs.some((dir) => x !== dir[i]));
+  return index === 0 ? '' : `${dirs[0].slice(0, index).join('/')}/`;
 }
 
 
@@ -452,8 +454,54 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const c1 = position[0][0];
+  const c2 = position[0][1];
+  const c3 = position[0][2];
+  const c4 = position[1][0];
+  const c5 = position[1][1];
+  const c6 = position[1][2];
+  const c7 = position[2][0];
+  const c8 = position[2][1];
+  const c9 = position[2][2];
+
+  switch (true) {
+    default:
+      return undefined;
+    case (c1 === 'X' && c2 === 'X' && c3 === 'X'):
+      return 'X';
+    case (c4 === 'X' && c5 === 'X' && c6 === 'X'):
+      return 'X';
+    case (c7 === 'X' && c8 === 'X' && c9 === 'X'):
+      return 'X';
+    case (c1 === 'X' && c4 === 'X' && c7 === 'X'):
+      return 'X';
+    case (c2 === 'X' && c5 === 'X' && c8 === 'X'):
+      return 'X';
+    case (c3 === 'X' && c6 === 'X' && c9 === 'X'):
+      return 'X';
+    case (c1 === 'X' && c5 === 'X' && c9 === 'X'):
+      return 'X';
+    case (c3 === 'X' && c5 === 'X' && c7 === 'X'):
+      return 'X';
+
+    case (c1 === '0' && c2 === '0' && c3 === '0'):
+      return '0';
+    case (c4 === '0' && c5 === '0' && c6 === '0'):
+      return '0';
+    case (c7 === '0' && c8 === '0' && c9 === '0'):
+      return '0';
+    case (c1 === '0' && c4 === '0' && c7 === '0'):
+      return '0';
+    case (c2 === '0' && c5 === '0' && c8 === '0'):
+      return '0';
+    case (c3 === '0' && c6 === '0' && c9 === '0'):
+      return '0';
+    case (c1 === '0' && c5 === '0' && c9 === '0'):
+      return '0';
+    case (c3 === '0' && c5 === '0' && c7 === '0'):
+      return '0';
+  }
 }
 
 
